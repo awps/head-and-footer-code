@@ -1,0 +1,11 @@
+.form-table.hfc-form {
+    position: relative;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    resize: both;
+}
