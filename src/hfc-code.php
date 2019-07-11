@@ -4,7 +4,7 @@
  * Plugin name: Head and Footer Code
  * Version: 0.0.1
  * Author: Andrei Surdu
- * Author URL: https://zerowp.com
+ * Author URI: https://zerowp.com
  * Description: Add custom code in the head and/or before closing the body.
  */
 
