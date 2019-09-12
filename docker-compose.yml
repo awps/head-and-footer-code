@@ -31,7 +31,7 @@ services:
             WORDPRESS_CONFIG_EXTRA: |
                 define('FS_METHOD', 'direct');
         volumes:
-            - "./src/:/var/www/html/wp-content/plugins/hfc-code"
+            - "./src/:/var/www/html/wp-content/plugins/head-and-footer-code"
             - "./wordpress/:/var/www/html"
 
     # PHP My Admin

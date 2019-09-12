@@ -1,0 +1,56 @@
+# Copyright (C) 2019 Andrei Surdu
+# This file is distributed under the same license as the Head and Footer Code plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Head and Footer Code 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/src\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-09-12T13:53:57+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.2.0\n"
+"X-Domain: head-and-footer-code\n"
+
+#. Plugin Name of the plugin
+msgid "Head and Footer Code"
+msgstr ""
+
+#. Description of the plugin
+msgid "Add custom code in the head and/or before closing the body."
+msgstr ""
+
+#. Author of the plugin
+msgid "Andrei Surdu"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://zerowp.com"
+msgstr ""
+
+#: hfc-code.php:104
+#: hfc-code.php:105
+msgid "Head & Footer Code"
+msgstr ""
+
+#: hfc-code.php:117
+msgid "Add scripts or styles, just before the closing %s tag."
+msgstr ""
+
+#: hfc-code.php:121
+msgid "General Settings"
+msgstr ""
+
+#: hfc-code.php:123
+msgid "Make sure to wrap yous code in %s or %s accordingly"
+msgstr ""
+
+#: hfc-code.php:132
+msgid "Head Code"
+msgstr ""
+
+#: hfc-code.php:147
+msgid "Footer Code"
+msgstr ""

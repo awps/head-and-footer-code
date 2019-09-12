@@ -2,15 +2,17 @@
 
 /**
  * Plugin name: Head and Footer Code
- * Version: 0.0.1
+ * Version: __STABLE_TAG__
  * Author: Andrei Surdu
  * Author URI: https://zerowp.com
  * Description: Add custom code in the head and/or before closing the body.
+ * Text Domain: head-and-footer-code
+ * Domain Path: /lang
  */
 
 class HeadFooterCodePlugin
 {
-    public $pageId = 'hfc-code';
+    public $pageId = 'head-and-footer-code';
 
     public $nonceAction = 'hfc_custom_code';
 
@@ -21,8 +23,27 @@ class HeadFooterCodePlugin
         add_action('admin_enqueue_scripts', [$this, 'enqueue'], 5);
         add_action('wp_head', [$this, 'head'], 99);
         add_action('wp_footer', [$this, 'footer'], 999);
+        add_action('plugins_loaded', [$this, 'lang']);
     }
 
+    /**
+     * Translate plugin
+     *
+     * Load plugin languages
+     *
+     */
+    function lang()
+    {
+        load_plugin_textdomain(
+            $this->pageId,
+            false,
+            dirname(plugin_basename(__FILE__)) . '/lang/'
+        );
+    }
+
+    /**
+     * Add scripts to public
+     */
     public function enqueue()
     {
         if (!empty($_GET['page']) && $_GET['page'] === $this->pageId) {
@@ -81,24 +102,40 @@ class HeadFooterCodePlugin
     public function menu()
     {
         add_options_page(
-            'Head & Footer Code',
-            'Head & Footer Code',
+            __('Head & Footer Code', 'head-and-footer-code'),
+            __('Head & Footer Code', 'head-and-footer-code'),
             'manage_options',
             $this->pageId,
             [$this, 'page']
         );
     }
 
+    /**
+     * Options page
+     */
     public function page()
     {
+        $desc = __("Add scripts or styles, just before the closing %s tag.", 'head-and-footer-code');
+
         ?>
         <div class="wrap">
-            <h1>General Settings</h1>
+            <h1><?php _e('General Settings', 'head-and-footer-code') ?></h1>
+            <p class="description"><?php printf(
+                    __("Make sure to wrap yous code in %s or %s accordingly", 'head-and-footer-code'),
+                    "<code>&lt;script>&lt;/script></code>",
+                    "<code>&lt;  style>&lt;/style></code>"
+                ) ?>.</p>
             <form method="post">
                 <?php wp_nonce_field($this->nonceAction) ?>
                 <table class="form-table hfc-form">
                     <tr>
-                        <th scope="row"><label>Head Code</label></th>
+                        <th scope="row">
+                            <label><?php _e('Head Code', 'head-and-footer-code') ?></label>
+                            <p class="description"><?php printf(
+                                    $desc,
+                                    "<code>&lt;/head></code>"
+                                ) ?></p>
+                        </th>
                         <td>
                             <textarea name="hfc_head_code" id="hfc_head_code" rows="10"><?php
                                 echo wp_unslash(esc_textarea(get_option('hfc_head_code', '')))
@@ -107,7 +144,13 @@ class HeadFooterCodePlugin
                     </tr>
 
                     <tr>
-                        <th scope="row"><label>Footer Code</label></th>
+                        <th scope="row">
+                            <label><?php _e('Footer Code', 'head-and-footer-code') ?></label>
+                            <p class="description"><?php printf(
+                                    $desc,
+                                    "<code>&lt;/body></code>"
+                                ) ?></p>
+                        </th>
                         <td>
                             <textarea name="hfc_footer_code" id="hfc_footer_code" rows="10"><?php
                                 echo wp_unslash(esc_textarea(get_option('hfc_footer_code', '')))
